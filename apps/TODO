@@ -1,0 +1,18 @@
+[] Configure mysql or postgresql db for production
+[] Added an uprivileged user to run docker contaienrs - (ufisadi)
+[] ENV PATH="/py/bin:$PATH" runs python inside our virtual environment
+[] define ENVironment vars on docker-compose that will be supplied to settings file when contianer is run
+[] SETTINGS.py update (SECRET_KEY, DEBUG, ALLOWED HOSTS)
+
+Notes
+wait for db
+- when using postgres on django and docker -> sometimes, the app starts before the postgres server is available
+ container may ahve started but initializing somethings & setting drivers in the behind the scence. So its not ready
+ for Djngo to connect hence when Django tries to conncet, it crashes. Work aroun is to add the "wait for db command"
+- wait makes dB available before Django can connce to it
+
+[] Add wait for Db - > core -> management -> commands-> wait_for_db.py 
+
+[] Serialize bid & vendor models
+[] Forms for company & user profile
+[]

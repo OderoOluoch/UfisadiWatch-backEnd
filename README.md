@@ -8,6 +8,32 @@ Ufisadi Watch is a web application idea that has been pitched to participate in 
 
 ### About the API
 This is a REST API developed using the `django-rest` framework. The goal is to provide an interface that will be consumed by any `frontend` framework or a mobile application if the **The Code Walkers** manages to develop one. 
+## Running the application
+The UfisadiAPI is a fully dockerized application. You need to worry not about the enviroment you're running it on. Ensure you have `docker` and `docker-compose` installed and working on your local environment.
+
+### Steps
+Step1: Cloning the repo:
+    `git clone https://github.com/OderoOluoch/UfisadiWatch-backEnd.git`
+Step2: Build the Image
+    Docker only option
+    `docker build --tag ufisadi`
+    `docker run ufisadi`
+
+    Docker Compose
+`docker compose build`
+`docker compose run --rm 'service-name' sh -c "django-admin startproject appname ."` -> run this command when you want to create a django app. 
+**Note:** _all django apps are created inside the `/apps` folder_
+`docker compose up/down` start or stop the container
+
+### Creating a django app using docker compose
+```docker
+docker compose run --rm ufisadi sh -c "python manage.py app_name apps/app_name "
+or 
+ docker compose run ufisadi python manage.py startapp product apps/product
+```
+## view app on browser
+When you run the container, navigate to your browser and type the following entry endpoint
+ `127.0.01:8000/api/tender-list/` to list all tenders. This is the format for accessing all the `http` verbs on this API.
 
 ## Usage
 
@@ -111,24 +137,4 @@ Subsequent  response definition willl only detail the expected value of the `dat
 - `204 No content` on success
 
 
-## Running the application
-The UfisadiAPI is a fully dockerized application. You need to worry not about the enviroment you're running it on. Ensure you have `docker` and `docker-compose` installed and working on your local environment.
-
-### Steps
-Step1: Cloning the repo:
-    `git clone https://github.com/OderoOluoch/UfisadiWatch-backEnd.git`
-Step2: Build the Image
-    Docker only option
-    `docker build --tag ufisadi`
-    `docker run ufisadi`
-
-    Docker Compose
-`docker compose build`
-`docker compose run --rm 'service-name' sh -c "django-admin startproject appname ."` -> run this command when you want to create a django app. 
-**Note:** _all django apps are created inside the `/apps` folder_
-`docker compose up/down` start or stop the container
-
-## view app on browser
-When you run the container, navigate to your browser and type the following entry endpoint
- `127.0.01:8000/api/tender-list/` to list all tenders. This is the format for accessing all the `http` verbs on this API.
 
